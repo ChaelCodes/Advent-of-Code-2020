@@ -4,7 +4,9 @@ class AdventOfCode
     def self.run
         print "What day would you like to run?\n"
         day = gets.strip.capitalize
-        print Kernel.const_get("Day#{day}").run
+        print "Part 1 or Part 2?"
+        part = gets.strip
+        print Kernel.const_get("Day#{day}").run(part)
         print "\n"
     end
 end
