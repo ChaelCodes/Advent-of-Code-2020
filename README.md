@@ -3,6 +3,15 @@
 
 Run a particular day's solution using `ruby advent_of_code.rb` It will ask you for the day, eg. 'one' and part eg. '1'.
 
+```
+$ ruby advent_of_code.rb
+What day would you like to run? (ex. one)
+one
+Part 1 or Part 2? (ex. 1)
+2
+128397680
+```
+
 I'm recording and uploading solutions on [YouTube](https://www.youtube.com/playlist?list=PLJgbigg8xpeXwU5G2lHNBQ_m11y56HEn_&playnext=1&index=1).
 
 Join our leaderboard at `219042-9f06f774`.
