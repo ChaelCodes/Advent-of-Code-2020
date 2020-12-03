@@ -1,5 +1,10 @@
+require_relative 'solution'
+
 class DayZero
-    def self.run
-        file = File.read("./inputs/day_zero.txt")
+    include Solution
+    FILE_INPUT = "./inputs/day_zero.txt"
+
+    def process
+        @input.first
     end
 end
