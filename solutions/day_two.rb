@@ -1,5 +1,3 @@
-require 'pry'
-
 class DayTwo
     FILE_INPUT = "./inputs/day_two.txt"
 

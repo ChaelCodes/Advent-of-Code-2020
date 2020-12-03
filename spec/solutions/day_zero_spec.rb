@@ -3,8 +3,28 @@ require './solutions/day_zero'
 
 RSpec.describe DayZero do
     describe '.run' do
-        subject { described_class.run }
+        subject { described_class.run(part) }
 
-        it { is_expected.to eq 'hello' }
+        context 'part 1' do
+            let(:part) { 1 }
+            it { is_expected.to eq 'hello' }
+        end
+
+        context 'when part 2' do
+            let(:part) { 2 }
+        end
+    end
+
+    describe '#process' do
+        subject { described_class.run(part).process }
+
+        context 'part 1' do
+            let(:part) { 1 }
+            it { is_expected.to eq 'hello' }
+        end
+
+        context 'when part 2' do
+            let(:part) { 2 }
+        end
     end
 end
