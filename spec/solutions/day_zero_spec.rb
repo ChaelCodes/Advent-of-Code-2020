@@ -16,7 +16,8 @@ RSpec.describe DayZero do
     end
 
     describe '#process' do
-        subject { described_class.run(part).process }
+        subject { described_class.new(input, part).process }
+        let(:input) { 'hello' }
 
         context 'part 1' do
             let(:part) { 1 }

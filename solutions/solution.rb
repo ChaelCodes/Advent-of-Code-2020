@@ -1,4 +1,5 @@
 module Solution
+    FILE_SPLIT = "\n"
     def self.included(klass)
         klass.extend(ClassMethods)
     end
@@ -6,7 +7,7 @@ module Solution
     module ClassMethods
         def run(part)
             file = File.read(self::FILE_INPUT)
-            array = file.split("\n").map { |line| self.parse_line(line) }
+            array = file.split(self::FILE_SPLIT).map { |line| self.parse_line(line) }
             self.new(array, part).process
         end
 
