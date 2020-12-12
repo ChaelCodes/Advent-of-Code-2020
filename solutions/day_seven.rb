@@ -17,9 +17,8 @@ class DaySeven
             bag_finder(bags)
             return @bag_list.count
         else
-            bag_counter([1, "shiny gold"])
+            bag_counter(bags) - 1
         end
-        
     end
 
     def bag_finder(bags)
@@ -36,7 +35,7 @@ class DaySeven
         purses = bags.map do |count, bag|
             count.to_i * bag_counter(find_bags(bag))
         end
-        purses.sum
+        1 + purses.sum
     end
 
     def find_bags(bag)

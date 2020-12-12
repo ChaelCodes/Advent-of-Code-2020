@@ -13,7 +13,7 @@ RSpec.describe DaySeven do
         context 'when part 2' do
             let(:part) { 2 }
 
-            it { is_expected.to eq 49086 }
+            it { is_expected.to eq 54803 }
         end
     end
 
