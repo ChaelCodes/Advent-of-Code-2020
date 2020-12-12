@@ -12,6 +12,8 @@ RSpec.describe DayEight do
 
         context 'when part 2' do
             let(:part) { 2 }
+
+            it { is_expected.to eq 846 }
         end
     end
 
@@ -34,7 +36,28 @@ RSpec.describe DayEight do
 
         context 'when part 2' do
             let(:part) { 2 }
+
+            it { is_expected.to eq 8 }
         end
+    end
+
+    describe '#find_swap_operations' do
+        subject { day_eight.find_swap_operations }
+        before { day_eight.find_program_end(day_eight.instructions_called) }
+
+        let(:day_eight) { described_class.new(input, part) }
+        let(:input) { ["nop +0",
+                        "acc +1",
+                        "jmp +4",
+                        "acc +3",
+                        "jmp -3",
+                        "acc -99",
+                        "acc +1",
+                        "jmp -4",
+                        "acc +6"] }
+        let(:part) { 2 }
+
+        it { is_expected.to eq [0, 2, 7, 4] }
     end
 
     describe '#exec' do
@@ -96,6 +119,28 @@ RSpec.describe DayEight do
                         expect(day_eight.index).to eq 1
                     end
                 end
+            end
+        end
+    end
+
+    describe '#substitute_operation' do
+        subject { day_eight.substitute_operation(line) }
+        let(:day_eight) { described_class.new(input, part) }
+        let(:input) { ["nop +0",
+                        "acc +1",
+                        "jmp +4",
+                        "acc +3",
+                        "jmp -3",
+                        "acc -99",
+                        "acc +1",
+                        "jmp -4",
+                        "acc +6"] }
+        let(:part) { 2 }
+        context 'line 0' do
+            let(:line) { 0 }
+            it 'changes a nop into a jmp' do
+                subject
+                expect(day_eight.input[line]).to eq 'jmp +0'
             end
         end
     end
