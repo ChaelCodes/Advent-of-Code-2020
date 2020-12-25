@@ -12,6 +12,8 @@ RSpec.describe DayEleven do
 
         context 'when part 2' do
             let(:part) { 2 }
+
+            it { is_expected.to eq 2199 }
         end
     end
 
@@ -38,6 +40,8 @@ RSpec.describe DayEleven do
 
         context 'when part 2' do
             let(:part) { 2 }
+
+            it { is_expected.to eq 26 }
         end
     end
 
@@ -86,6 +90,52 @@ RSpec.describe DayEleven do
                     #.#LLLL.##]
             end
         end
+
+        context 'when part 2' do
+            let(:part) { 2 }
+
+            it 'updates the seat map' do
+                subject
+                expect(instance.input).to eq %w[#.##.##.##
+                                                #######.##
+                                                #.#.#..#..
+                                                ####.##.##
+                                                #.##.##.##
+                                                #.#####.##
+                                                ..#.#.....
+                                                ##########
+                                                #.######.#
+                                                #.#####.##]
+            end
+
+            context 'second round' do
+                let(:input) { %w[#.##.##.##
+                                 #######.##
+                                 #.#.#..#..
+                                 ####.##.##
+                                 #.##.##.##
+                                 #.#####.##
+                                 ..#.#.....
+                                 ##########
+                                 #.######.#
+                                 #.#####.##] }
+    
+                
+                it 'updates the seat map' do
+                    subject
+                    expect(instance.input).to eq %w[#.LL.LL.L#
+                                                    #LLLLLL.LL
+                                                    L.L.L..L..
+                                                    LLLL.LL.LL
+                                                    L.LL.LL.LL
+                                                    L.LLLLL.LL
+                                                    ..L.L.....
+                                                    LLLLLLLLL#
+                                                    #.LLLLLL.L
+                                                    #.LLLLL.L#]
+                end
+            end
+        end
     end
 
     describe '#seat_transformation' do
@@ -96,6 +146,31 @@ RSpec.describe DayEleven do
             let(:y) { 0 }
 
             it { is_expected.to eq 1 }
+        end
+
+        context 'for part 2' do
+            let(:part) { 2 }
+            let(:input) { %w[#.##.##.##
+                             #######.##
+                             #.#.#..#..
+                             ####.##.##
+                             #.##.##.##
+                             #.#####.##
+                             ..#.#.....
+                             ##########
+                             #.######.#
+                             #.#####.##] }
+            let(:x) { 6 }
+            let(:y) { 0 }
+
+            it { is_expected.to eq -1 }
+
+            context 'edge seat' do
+                let(:x) { 0 }
+                let(:y) { 1 }
+
+                it { is_expected.to eq 0 }
+            end
         end
     end
 
@@ -119,5 +194,56 @@ RSpec.describe DayEleven do
 
             it { is_expected.to eq 2 }
         end
+
+        context 'part 2' do
+            let(:part) { 2 }
+            let(:input) { %w[.......#.
+                             ...#.....
+                             .#.......
+                             .........
+                             ..#L....#
+                             ....#....
+                             .........
+                             #........
+                             ...#.....] }
+            let(:x) { 3 }
+            let(:y) { 4 }
+            
+            it { is_expected.to eq 8 }
+
+            context 'with sample input' do
+                let(:input) { %w[#.##.##.##
+                                #######.##
+                                #.#.#..#..
+                                ####.##.##
+                                #.##.##.##
+                                #.#####.##
+                                ..#.#.....
+                                ##########
+                                #.######.#
+                                #.#####.##] }
+                let(:x) { 0 }
+                let(:y) { 1 }
+
+                it { is_expected.to eq 4 }
+            end
+        end
+    end
+
+    describe '#neighbor_count' do
+        subject { described_class.new(input, part).neighbor_count(x, y, 1, 1) }
+        let(:input) { %w[.......#.
+                         ...#.....
+                         .#.......
+                         .........
+                         ..#L....#
+                         ....#....
+                         .........
+                         #........
+                         ...#.....] }
+        let(:x) { 3 }
+        let(:y) { 4 }
+
+        it { is_expected.to eq 1 }
     end
 end
